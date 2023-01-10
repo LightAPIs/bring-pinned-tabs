@@ -1,0 +1,17 @@
+{
+  "extDes": {
+    "message": "允许在创建新的浏览器窗口时自动将固定标签页移动或复制到该窗口中。"
+  },
+  "mode": {
+    "message": "模式："
+  },
+  "mainSwitch": {
+    "message": "总开关"
+  },
+  "moveMode": {
+    "message": "将固定标签页移动到新窗口上"
+  },
+  "copyMode": {
+    "message": "将固定标签页复制到新窗口上"
+  }
+}

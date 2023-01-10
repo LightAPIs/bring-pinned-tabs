@@ -1,0 +1,17 @@
+{
+  "extDes": {
+    "message": "Allows you to move or copy pinned tabs to a new window when creating it."
+  },
+  "mode": {
+    "message": "Mode:"
+  },
+  "mainSwitch": {
+    "message": "Main Switch"
+  },
+  "moveMode": {
+    "message": "Move pinned tabs to the new window"
+  },
+  "copyMode": {
+    "message": "Copy pinned tabs to the new window"
+  }
+}

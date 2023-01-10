@@ -15,78 +15,74 @@ html {
 }
 
 body {
-  width: 350px;
-  height: 300px;
+  width: 175px;
+  height: 250px;
+}
+
+button {
+  background: #fff;
+  border: 0px;
 }
 
 .app {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   text-align: center;
   padding: 20px;
 }
 
-.title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
+.main-switch {
+  cursor: pointer;
+}
+
+.ikonate {
+  display: block;
+  stroke-linecap: round;
+  stroke-linejoin: miter;
+  fill: none;
+}
+
+.ikonate-power {
+  width: 96px;
+  height: 96px;
+  stroke-width: 4;
+  stroke: #dedede;
+}
+
+.enable .ikonate-power {
+  stroke: #6ddeb4;
+}
+
+.mode-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.mode-content button {
+  cursor: pointer;
+  margin: 10px;
 }
 
 .subtitle {
-  font-size: 12px;
+  font-weight: bold;
 }
 
-code {
-  font-size: 12px;
-  font-family: inherit;
-  background-color: rgba(254, 237, 185, 0.3);
-  padding: 2px 4px;
-  border-radius: 2px;
+.ikonate-button {
+  width: 48px;
+  height: 48px;
+  stroke: #dedede;
+  stroke-width: 1.5;
 }
 
-.counter-label {
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-.counter {
-  font-size: 36px;
-  font-weight: 700;
-}
-
-.button-container {
-  margin-top: 15px;
-}
-
-.button {
-  border: 0;
-  display: inline-block;
-  padding: 10px 20px;
-  margin-right: 4px;
-  margin-left: 4px;
-  background-color: bisque;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-  user-select: none;
-}
-
-.button:focus {
-  outline: none;
-}
-
-.button:hover {
-  transform: scale(1.1);
+.enable .ikonate-button {
+  stroke: #3987ff;
 }
 
 .divider {
-  margin: 30px auto 25px;
-  width: 50px;
+  margin: 20px auto 15px;
+  width: 100px;
   border: 0.5px dashed #000;
   opacity: 0.1;
 }

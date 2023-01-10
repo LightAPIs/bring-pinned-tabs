@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>My Chrome Extension</title>
-    <link rel="stylesheet" href="popup.css" />
-  </head>
-  <body>
-    <div class="app">
-      <p class="counter-label">Counter</p>
-      <div id="counter" class="counter"></div>
-      <div class="button-container">
-        <button id="decrementBtn" class="button">-</button>
-        <button id="incrementBtn" class="button">+</button>
-      </div>
 
-      <hr class="divider" />
+<head>
+  <meta charset="UTF-8" />
+  <title>Bring Pinned Tabs</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
 
-      <p class="title">Chrome Extension is Ready!</p>
-      <p class="subtitle">Start by updating <code>popup.html</code></p>
+<body>
+  <div class="app">
+    <div class="header">
+      <button type="button" class="main-switch i18n-title" data-key="mainSwitch" aria-label="main switch">
+        <svg class="main-switch-icon ikonate ikonate-power" aria-hidden="true">
+          <use xlink:href="./img/ikonate.svg#power"></use>
+        </svg>
+      </button>
     </div>
+    <hr class="divider" />
+    <div class="content">
+      <p class="i18n-text subtitle" data-key="mode"></p>
+      <div class="mode-content">
+        <button type="button" class="move-mode i18n-title" data-key="moveMode" aria-label="move mode">
+          <svg class="move-mode-icon ikonate ikonate-button" aria-hidden="true">
+            <use xlink:href="./img/ikonate.svg#walking"></use>
+          </svg>
+        </button>
+        <button type="button" class="copy-mode i18n-title" data-key="copyMode" aria-label="copy mode">
+          <svg class="copy-mode-icon ikonate ikonate-button" aria-hidden="true">
+            <use xlink:href="./img/ikonate.svg#copy"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <script src="popup.js"></script>
+  <script src="popup.js"></script>
+</body>
 
-    <!--
-      This HTML file opens when you click on icon from the toolbar.
-
-      To begin the development, run `npm run watch`.
-      To create a production bundle, use `npm run build`.
-    -->
-  </body>
 </html>

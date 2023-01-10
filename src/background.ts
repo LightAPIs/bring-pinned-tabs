@@ -1,21 +1,52 @@
 'use strict';
 
-// With background scripts you can communicate with popup
-// and contentScript files.
-// For more information on background script,
-// See https://developer.chrome.com/extensions/background_pages
+import { tabIdsFilter, findPinnedTabs } from './common/filter';
+import { getStorage } from './common/storage';
+import { moveTabs } from './common/operation';
 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'GREETINGS') {
-    const message: string = `Hi ${
-      sender.tab ? 'Con' : 'Pop'
-    }, my name is Bac. I am from Background. It's great to hear from you.`;
+chrome.windows.onCreated.addListener(
+  async (win) => {
+    if (!chrome.runtime.lastError && win.id != undefined) {
+      const storage = await getStorage();
+      const { enable, mode } = storage;
+      if (!enable) {
+        return;
+      }
+      const allWindows = await chrome.windows.getAll({
+        populate: true,
+        windowTypes: ['normal'],
+      });
+      const pinnedTabs = findPinnedTabs(allWindows, win.id);
+      const tabIds = tabIdsFilter(pinnedTabs);
+      if (tabIds.length > 0) {
+        let tabs: chrome.tabs.Tab[] = [];
+        if (mode === 'copy') {
+          const dupTabs: chrome.tabs.Tab[] = [];
+          for (const val of tabIds) {
+            const dupTab = await chrome.tabs.duplicate(val);
+            if (dupTab) {
+              dupTabs.push(dupTab);
+            }
+          }
+          const dupTabIds = tabIdsFilter(dupTabs);
+          if (dupTabIds.length > 0) {
+            tabs = await moveTabs(dupTabIds, win.id);
+          }
+        } else {
+          tabs = await moveTabs(tabIds, win.id);
+        }
 
-    // Log message coming from the `request` parameter
-    console.log(request.payload.message);
-    // Send a response message
-    sendResponse({
-      message,
-    });
+        tabs.forEach((tab) => {
+          if (tab.id) {
+            chrome.tabs.update(tab.id, {
+              pinned: true,
+            });
+          }
+        });
+      }
+    }
+  },
+  {
+    windowTypes: ['normal'],
   }
-});
+);
